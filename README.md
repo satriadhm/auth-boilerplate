@@ -34,10 +34,10 @@ $ npm install
   Start the server:
 
 ```console
-$ npm start
+$ npm run start
 ```
 
-  View the website at: http://localhost:3000
+  View the website at: http://localhost:8000
 
 Available API 
 
