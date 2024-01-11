@@ -19,7 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./app/models");
 const Role = db.role;
 
-db.mongoose.connect('mongodb://127.0.0.1:27017/myapp')
+db.mongoose.connect('mongodb://127.0.0.1:27017/auth_service', 
+{ useNewUrlParser: true,
+  useUnifiedTopology: true,
+}) 
   .then(() => {
     console.log("Successfully connect to MongoDB.");
     initial();
@@ -32,14 +35,14 @@ db.mongoose.connect('mongodb://127.0.0.1:27017/myapp')
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to auth-boilerplate."});
 });
 
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
