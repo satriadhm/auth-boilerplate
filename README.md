@@ -1,71 +1,155 @@
-[![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)
+Berikut adalah README dalam bahasa Inggris yang mencakup semua fitur dari boilerplate ini:
 
-  Fast, unopinionated, minimalist web framework for [Node.js](http://nodejs.org).
+```markdown
+# Node.js Auth Boilerplate with MongoDB and JWT
 
-  [![NPM Version][npm-version-image]][npm-url]
-  [![NPM Install Size][npm-install-size-image]][npm-install-size-url]
-  [![NPM Downloads][npm-downloads-image]][npm-downloads-url]
+This boilerplate provides a robust starting point for implementing authentication and authorization in Node.js applications using MongoDB and JWT. 
 
+## Features
+- **JWT Authentication & Authorization** with Role-based Access Control (RBAC)
+- **Rate Limiting** to prevent brute-force attacks (via `express-rate-limit`)
+- **Centralized Logging** using `winston`
+- **Swagger API Documentation** for interactive API testing
+- **Error Handling Middleware** for consistent error responses
+- **Database Seeding** for initializing roles and an admin user
+- **Unit Testing** with `Jest` and `Supertest`
+- **CI/CD Integration** using GitHub Actions for automated testing
+
+---
+
+## Directory Structure
+```
+satriadhm-auth-boilerplate/
+├── README.md
+├── package.json
+├── .env
+├── server.js
+├── app/
+│   ├── config/
+│   │   ├── auth.config.js
+│   │   ├── db.config.js
+│   │   └── swagger.config.js
+│   ├── controllers/
+│   │   ├── auth.controller.js
+│   │   └── user.controller.js
+│   ├── middleware/
+│   │   ├── authJwt.js
+│   │   ├── errorHandler.js
+│   │   ├── index.js
+│   │   └── verifySignUp.js
+│   ├── models/
+│   │   ├── index.js
+│   │   ├── role.model.js
+│   │   └── user.model.js
+│   ├── routes/
+│   │   ├── auth.routes.js
+│   │   ├── user.routes.js
+│   │   └── docs.routes.js
+│   ├── seeds/
+│   │   └── seed.js
+│   └── utils/
+│       ├── logger.js
+│       └── rateLimiter.js
+├── tests/
+│   ├── auth.test.js
+│   ├── user.test.js
+└── .github/
+    └── workflows/
+        └── ci.yml
+```
+
+---
 
 ## Installation
 
-If this is a brand new project, make sure to create a `package.json` first with
-the [`npm init` command](https://docs.npmjs.com/creating-a-package-json-file).
+### Prerequisites
+1. **Node.js** version >= 14.x
+2. **MongoDB** installed locally or accessible remotely
 
-Installation is done using the
-[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/auth-boilerplate.git
+   cd auth-boilerplate
+   ```
 
-```console
-$ npm install express
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create an `.env` file:
+   ```env
+   PORT=8000
+   DB_URI=mongodb://127.0.0.1:27017/auth_service
+   CLIENT_ORIGIN=http://localhost:8081
+   JWT_SECRET=supersecretkey
+   ```
+
+4. Start the server:
+   ```bash
+   npm start
+   ```
+
+5. Seed the database:
+   ```bash
+   npm run seed
+   ```
+
+---
+
+## API Documentation
+Interactive API documentation is available via Swagger:
+```
+http://localhost:8000/api/docs
 ```
 
-  Create the app:
+---
 
-```console
-$ express /tmp/foo && cd /tmp/foo
+## Testing
+
+Run all unit tests with coverage:
+```bash
+npm test
 ```
 
-  Install dependencies:
+---
 
-```console
-$ npm install
-```
+## CI/CD Integration
 
-  Start the server:
+This project includes a CI/CD pipeline powered by **GitHub Actions**.  
+The pipeline automatically:
+1. Runs all tests on each push or pull request to the `main` branch.
+2. Uses a MongoDB service for integration testing in an isolated environment.
 
-```console
-$ npm run start
-```
+You can find the configuration in `.github/workflows/ci.yml`.
 
-  View the website at: http://localhost:8000
+---
 
-Available API 
+## Seeding the Database
 
-**Auth**
+The `npm run seed` command initializes the database with:
+- Default roles (`user`, `admin`, `moderator`)
+- An admin user with the following credentials:
+  - **Username:** `admin`
+  - **Password:** `adminpassword`
 
-Sign In
-```console
-http://localhost:8000/api/auth/signin
-```
-Sign Up
-```console
-http://localhost:8000/api/auth/signup
-```
+---
 
+## Contribution
+
+Contributions are welcome! Please:
+1. Fork this repository.
+2. Create a new branch for your feature or bug fix.
+3. Submit a pull request with a clear description.
+
+---
 
 ## License
+This project is licensed under the [MIT License](LICENSE).
 
-  [MIT](LICENSE)
+---
 
-[appveyor-image]: https://badgen.net/appveyor/ci/dougwilson/express/master?label=windows
-[appveyor-url]: https://ci.appveyor.com/project/dougwilson/express
-[coveralls-image]: https://badgen.net/coveralls/c/github/expressjs/express/master
-[coveralls-url]: https://coveralls.io/r/expressjs/express?branch=master
-[github-actions-ci-image]: https://badgen.net/github/checks/expressjs/express/master?label=linux
-[github-actions-ci-url]: https://github.com/expressjs/express/actions/workflows/ci.yml
-[npm-downloads-image]: https://badgen.net/npm/dm/express
-[npm-downloads-url]: https://npmcharts.com/compare/express?minimal=true
-[npm-install-size-image]: https://badgen.net/packagephobia/install/express
-[npm-install-size-url]: https://packagephobia.com/result?p=express
-[npm-url]: https://npmjs.org/package/express
-[npm-version-image]: https://badgen.net/npm/v/express
+## Maintainers
+- [Glorious Satria](https://github.com/satriadhm)
+```
