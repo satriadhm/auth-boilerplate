@@ -1,6 +1,4 @@
-Berikut adalah README dalam bahasa Inggris yang mencakup semua fitur dari boilerplate ini:
 
-```markdown
 # Node.js Auth Boilerplate with MongoDB and JWT
 
 This boilerplate provides a robust starting point for implementing authentication and authorization in Node.js applications using MongoDB and JWT. 
